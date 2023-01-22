@@ -1,5 +1,5 @@
 PImage[] imgs;
-String folder = "../_sourceImages/scenes B";  
+String folder = "../_sourceImages/small";  
 
 int maxwidth = 0;
 int maxheight = 0;
@@ -18,7 +18,7 @@ void initImages() {
       String f = listOfFiles[i].getName();
       System.out.println("File " + f);
 
-      if ( f.endsWith(".jpg") || f.endsWith(".png") || f.endsWith(".jpeg") )
+      if ( f.endsWith(".JPG") || f.endsWith(".jpg") || f.endsWith(".png") || f.endsWith(".jpeg") )
         filenames.add( f );
     } else if (listOfFiles[i].isDirectory()) {
       System.out.println("Directory " + listOfFiles[i].getName());

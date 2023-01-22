@@ -2,82 +2,104 @@ PFont font;
 String word = "word";
 
 String charset;
+PGraphics[] charTiles;
+PGraphics[] imgTiles;
 
-float fontwidth;
-float fontSize = 48;
-float fontHeight;
+PGraphics wb;
+
+float fontWidth;
+float fontSize = 20;
+//float fontHeight;
 
 int fontpointer = 0;
 boolean fontPointerPause = false;
+
+float tilewidth, tileheight;
+float paddL = 0;
+float paddR = 0;
+float paddT = 10;
+float paddB = 0;
+float kern = 5;
+float lead = 1;
 
 void setup() {
 
   pixelDensity(2);
   fullScreen();
 
+  wb = createGraphics(pixelWidth,pixelHeight); //<>//
+  
+  println(" pixelWidth: " + pixelWidth);
+  println("      width: " + width);
+  println("pixelHeight: " + pixelHeight);
+  println("     height: " + height);
+  initImages();
 
 
-
-  charset = loadStrings("charset.txt")[0];
-  word = charset;
   //font = loadFont("PerfectDOSVGA437-48.vlw");
-  font = createFont( "Monaco", 48);
+  font = createFont( "Monaco", fontSize);
   textSize(fontSize);
-  fontHeight = textAscent();// + textDescent();
-  println("fh: " + fontHeight);
+  //fontHeight = textAscent();// + textDescent();
+  //println("fh: " + fontHeight);
   println("fs: " + fontSize);
   textFont(font);
-  
+
   fill(255);
 
-  for ( int i = 0; i < charset.length(); i++ ) {
-    float fWidth = textWidth( charset.charAt(i));
-    println(fWidth);
-    fontwidth = fWidth;
-  }
+  prepareFont();
+  background(0);
 }
 
 
 void draw() {
   background(0);
-  textAlign(LEFT);
-  text(word, 50, 200);
+  //textAlign(LEFT);
+  //text(word, 50, 200);
 
 
-  stroke(200);
-  line(width/2, 0, width/2, height);
-  line(0, height/2, width, height/2);
+  //stroke(200);
+  //line(width/2, 0, width/2, height);
+  //line(0, height/2, width, height/2);
 
 
-  rectMode(CORNER);
-  textAlign(LEFT);
+  
 
+  /*
   fill(80);
-  rect(width/2 - fontwidth, height/2-fontHeight, fontwidth, fontSize);
-  fill(255);
-  text(charset.charAt(fontpointer), width/2-fontwidth, height/2-textDescent());
-
+   rect(width/2 - fontWidth, height/2-fontSize, fontWidth, fontSize);
+   fill(255);
+   text(charset.charAt(fontpointer), width/2-fontWidth, height/2-textDescent());
+   */
+   /*
   if ( !fontPointerPause ) {
     fontpointer++;
     if ( fontpointer >= charset.length())fontpointer = 0;
   }
+  */
+
+  
+
+  /// draw char tiles in a simple line
+
+  for ( int i = 0; i < charTiles.length; i++) {
+    //image(charTiles[i], (charTiles[i].width * i)+(kern*i), height - 200);
+  }
+  image(wb,0,0);
+  displayCommandline();
 }
 
 
 
 
 void keyPressed() {
-  /*
-  if (key == BACKSPACE) {
-    word = word.substring(0, word.length()-1);
-  } else {
-    word += key;
-  }
-  */
   
+  commandKeyPressed(); 
+
   if (key == CODED) {
-    if( keyCode == LEFT ) fontpointer--;
-    if( keyCode == RIGHT) fontpointer++;
+    if ( keyCode == LEFT ) fontpointer--;
+    if ( keyCode == RIGHT) fontpointer++;
   }
+  if ( fontpointer >= charset.length() ) fontpointer = 0;
+  if ( fontpointer < 0 ) fontpointer = charset.length()-1;
   if ( key == ' ' ) fontPointerPause = ! fontPointerPause;
 }
