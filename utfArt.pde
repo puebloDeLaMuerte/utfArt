@@ -3,7 +3,7 @@ String word = "word";
 
 String charset;
 PGraphics[] charTiles;
-PGraphics[] imgTiles;
+PImage[][] imgTiles;
 
 PGraphics wb;
 
@@ -53,30 +53,6 @@ void setup() {
 
 void draw() {
   background(0);
-  //textAlign(LEFT);
-  //text(word, 50, 200);
-
-
-  //stroke(200);
-  //line(width/2, 0, width/2, height);
-  //line(0, height/2, width, height/2);
-
-
-  
-
-  /*
-  fill(80);
-   rect(width/2 - fontWidth, height/2-fontSize, fontWidth, fontSize);
-   fill(255);
-   text(charset.charAt(fontpointer), width/2-fontWidth, height/2-textDescent());
-   */
-   /*
-  if ( !fontPointerPause ) {
-    fontpointer++;
-    if ( fontpointer >= charset.length())fontpointer = 0;
-  }
-  */
-
   
 
   /// draw char tiles in a simple line

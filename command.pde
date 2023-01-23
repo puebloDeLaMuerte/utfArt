@@ -8,18 +8,25 @@ void evaluateCommand() {
   println("command: " + command);
   boolean commandFail = false;
   
-  switch(command) {
-    
-    case "cls":
-      cls();
-    break;
-    case "drawGrid":
-      drawGrid();
-    break;    
-    default:
-      commandFail = true;
+  if( command.startsWith("cls") ) {
+    cls(command);
+  }
+  else
+  if( command.startsWith("drawGrid") ) {
+    drawGrid(command);
+  }
+  else
+  if( command.startsWith("inImage") ) {
+    setInputImage(command);
+  }
+  else
+  if( command.startsWith("exit") ) {
+    exitUtfArt();
+  }
+  
+  else {
+    commandFail = true;
       println("unknownCommand: " + command);
-    break;
   }
   
   if( !commandFail ) commandActive = false; 
