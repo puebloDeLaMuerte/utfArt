@@ -1,5 +1,5 @@
 PImage[] imgs;
-String folder = "../_sourceImages/small";  
+String folder = "../_sourceImages/ego";  
 
 int maxwidth = 0;
 int maxheight = 0;

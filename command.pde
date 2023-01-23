@@ -8,12 +8,16 @@ void evaluateCommand() {
   println("command: " + command);
   boolean commandFail = false;
   
-  if( command.startsWith("cls") ) {
-    cls(command);
+  if( command.startsWith("clear") ) {
+    clear(command);
   }
   else
-  if( command.startsWith("drawGrid") ) {
-    drawGrid(command);
+  if( command.startsWith("drawCharGrid") ) {
+    drawCharGrid(command);
+  }
+  else
+  if( command.startsWith("drawImageGrid") ) {
+    drawImageGrid(command);
   }
   else
   if( command.startsWith("inImage") ) {
@@ -22,6 +26,18 @@ void evaluateCommand() {
   else
   if( command.startsWith("exit") ) {
     exitUtfArt();
+  }
+  else
+  if( command.startsWith("gridifyImage") ) {
+    gridifyImage(command);
+  }
+  else
+  if( command.startsWith("translate") ) {
+    translateGrid(command);
+  }
+  else
+  if( command.startsWith("drawInImage") ) {
+    drawInImage(command);
   }
   
   else {

@@ -4,6 +4,7 @@ String word = "word";
 String charset;
 PGraphics[] charTiles;
 PImage[][] imgTiles;
+int[][] charGrid;
 
 PGraphics wb;
 
@@ -17,17 +18,17 @@ boolean fontPointerPause = false;
 float tilewidth, tileheight;
 float paddL = 0;
 float paddR = 0;
-float paddT = 10;
+float paddT = 3;
 float paddB = 0;
 float kern = 5;
-float lead = 1;
+float lead = 2;
 
 void setup() {
 
   pixelDensity(2);
   fullScreen();
 
-  wb = createGraphics(pixelWidth,pixelHeight); //<>//
+  wb = createGraphics(pixelWidth,pixelHeight);
   
   println(" pixelWidth: " + pixelWidth);
   println("      width: " + width);
